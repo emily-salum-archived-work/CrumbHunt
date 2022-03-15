@@ -103,9 +103,13 @@ public static int fruitSpawn;
 			{
 				int xx = Game.rand.nextInt(WIDTH);
 				int yy = Game.rand.nextInt(HEIGHT);
-				if(!(tiles[xx + yy * WIDTH] instanceof WallTile) && !EnemySpace(xx,yy) && !InPlayerRange(xx,yy))
+				
+				int tile_xx = xx * TILE_SIZE;
+				int tile_yy =  yy * TILE_SIZE;
+				
+				if(!(tiles[xx + yy * WIDTH] instanceof WallTile) && !EnemySpace(tile_xx, tile_yy) && !InPlayerRange(tile_xx, tile_yy))
 				{
-					Enemy en = new Enemy(xx * TILE_SIZE,yy * TILE_SIZE, 10,10,2, Game.ssheet.getSprite(34, 65, 40, 13), 3);
+					Enemy en = new Enemy(xx * TILE_SIZE,yy * TILE_SIZE, 10,10, 2, Game.ssheet.getSprite(34, 65, 40, 13), 3);
 					en.normalSprite = Game.ssheet.getSprite(34, 1, 11, 12);
 					Game.enemies.add(en);	
 					break;
@@ -169,6 +173,7 @@ public static int fruitSpawn;
 	
 	public boolean FruitSpace(int xx, int yy)
 	{
+		 
 		
 		for(int i = 0; i < Game.entities.size(); i++)
 		{
@@ -184,13 +189,20 @@ public static int fruitSpawn;
 	
 	public void InicialFruits()
 	{
+		
+		
+		
+		
 		for(int i = 0; i < fruitnumber; i++)
 		{
 			while(true)
 			{
 				int xx = Game.rand.nextInt(WIDTH);
 				int yy = Game.rand.nextInt(HEIGHT);
-				if(!(tiles[xx + yy * WIDTH] instanceof WallTile) && !FruitSpace(xx,yy) && !InPlayerRange(xx,yy))
+				int tile_xx = xx * TILE_SIZE;
+				int tile_yy =  yy * TILE_SIZE;
+				
+				if(!(tiles[xx + yy * WIDTH] instanceof WallTile) && !FruitSpace(tile_xx, tile_yy) && !InPlayerRange(tile_xx, tile_yy))
 				{
 					Fruit fruit = new Fruit(xx * TILE_SIZE,yy * TILE_SIZE,Game.rand.nextInt(4));
 					Game.entities.add(fruit);

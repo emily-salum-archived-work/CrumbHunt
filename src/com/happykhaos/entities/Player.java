@@ -68,7 +68,7 @@ public class Player extends Entity
 	public static int fruitsCollected;
 	
 	public static int food = 0;
-	public static float StandardVelocity = 1.8f;
+	public static float StandardVelocity = 1.7f;
 
 	
 	public Player(int x, int y, int width, int height)

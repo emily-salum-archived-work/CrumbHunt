@@ -41,7 +41,7 @@ public class ShopItem extends Entity{
 			button.text.setOffset(20);
 			button.text.y += 20;
 			button.text.AddOutline(Color.black);
-			standardCost = 2;
+			standardCost = 3;
 			
 			break;
 			
@@ -56,7 +56,7 @@ public class ShopItem extends Entity{
 			button.text.y += 20;
 			button.text.AddOutline(Color.black);
 			
-			standardCost = 3;
+			standardCost = 4;
 			break;
 			
 		case "carry":
@@ -71,7 +71,7 @@ public class ShopItem extends Entity{
 			button.text.y += 20;
 			button.text.AddOutline(Color.black);
 			
-			standardCost = 5;
+			standardCost = 6;
 			
 			break;
 			
@@ -88,7 +88,7 @@ public class ShopItem extends Entity{
 			button.text.y += 20;
 			button.text.AddOutline(Color.black);
 			
-			standardCost = 5;
+			standardCost = 7;
 			
 			
 			break;

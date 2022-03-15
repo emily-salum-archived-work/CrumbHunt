@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.happykhaos.entities.Birdie;
 import com.happykhaos.entities.Player;
@@ -14,6 +16,8 @@ import com.happykhaos.main.OptionMenu;
 import com.happykhaos.main.Text;
 import com.happykhaos.world.Season;
 
+import Graphics.Particles;
+
 public class Nest {
 
 	
@@ -22,6 +26,9 @@ public class Nest {
 	public Text fruitCounter;
 	public Text seasonCount;
 	
+	
+	public static List<Particles> displayBoxes = new ArrayList<Particles>();
+	public static Particles currentBox;
 	
 	public static Birdie[] birdies;
 	
@@ -45,7 +52,7 @@ public class Nest {
 		opts.option[1].text.AddOutline(Color.black);
 		
 		//opts.ChangeTextSize(40);
-	fruitCounter = new Text(0, 15,27,Color.magenta, 20);
+		fruitCounter = new Text(0, 15,27,Color.magenta, 20);
 		fruitCounter.ChangeFont(Game.optionFont);
 		fruitCounter.AddOutline(Color.black);
 		seasonCount =  new Text(0,Game.WIDTH / 2 + 20, 27,Color.orange, 20);
@@ -99,7 +106,7 @@ public class Nest {
 			}
 			
 			
-			birdies[i] = new Birdie(60 + i * 50,165 + yd,30,30,b);
+			birdies[i] = new Birdie(40 + i * 50,165 + yd,30,30,b, this);
 			birdies[i].name = name;
 			birdies[i].nameText.textColor = c;
 			
@@ -169,6 +176,7 @@ public class Nest {
 	
 	public void Tick()
 	{
+		
 		if(transitionState == 1)
 		{
 			if(this.mom.getX() > xBirdDestination)
@@ -198,6 +206,13 @@ public class Nest {
 			
 			
 		}
+		
+		
+		if(displayBoxes.size() != 0 && (this.currentBox == null || this.currentBox.life == 0)) {
+			this.currentBox = displayBoxes.remove(0);
+			Game.p.add(this.currentBox);
+		}
+		
 	}
 	
 	public void Render(Graphics g)
@@ -292,6 +307,10 @@ public class Nest {
 		
 	}
 	
+	
+	public void showDisplayBox(Particles box) {
+		displayBoxes.add(box);
+	}
 	
 	public void ConfirmClick(int x, int y)
 	{

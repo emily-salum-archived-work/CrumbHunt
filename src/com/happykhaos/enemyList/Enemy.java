@@ -73,7 +73,7 @@ public boolean visible = true;
 		{
 			if(Game.world.tiles[i / World.TILE_SIZE + (startY * World.WIDTH / World.TILE_SIZE)] instanceof WallTile)
 			{
-				minX = i + 1;
+				minX = i + 2;
 				break;
 			}
 			if(i - 1 == startX - 5)
@@ -89,7 +89,7 @@ public boolean visible = true;
 		{
 			if(Game.world.tiles[i /World.TILE_SIZE  + (startY * World.WIDTH/World.TILE_SIZE )] instanceof WallTile)
 			{
-				maxX = i- 1;
+				maxX = i- 2;
 				break;
 			}
 			if(i + 1 == startX + 5)
@@ -133,8 +133,18 @@ public boolean visible = true;
 		}
 	}
 	
-	private int attackFrame = 0, attackInterval, attackMaxInterval = 10;
+	protected int attackFrame = 0, attackInterval, attackMaxInterval = 5;
 	private boolean attacking;
+	
+	
+	public boolean canAttack() {
+		return true;
+	}
+	
+	public void attacked() {
+		
+	}
+	
 	public void Tick()
 	{
 		
@@ -150,7 +160,7 @@ public boolean visible = true;
 				NormalMove();
 			}
 
-			if(DistanceOf(this.getX(), this.getY(), Game.player.getX(), Game.player.getY()) < Vision) 
+			if(this.canAttack() && DistanceOf(this.getX(), this.getY(), Game.player.getX(), Game.player.getY()) < Vision) 
 			{
 				this.State = "attack";
 			}
@@ -165,7 +175,7 @@ public boolean visible = true;
 			{
 				
 				Move();
-				if(isCollidingWithPlayer(10,10))
+				if(this.canAttack() && isCollidingWithPlayer(10,10))
 				{
 
 					
@@ -255,6 +265,7 @@ public boolean visible = true;
 				if(isCollidingWithPlayer(10,10))
 				{
 					DamagePlayer();
+					this.attacked();
 				}
 				
 				

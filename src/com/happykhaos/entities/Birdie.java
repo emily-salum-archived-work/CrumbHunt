@@ -9,23 +9,29 @@ import com.happykhaos.main.Camera;
 import com.happykhaos.main.Game;
 import com.happykhaos.main.Text;
 
+import GameStates.Nest;
 import Graphics.Particles;
 
 
 public class Birdie extends Entity{
 	
 	
-	public Birdie(double x, double y, int width, int height, BufferedImage sprite) {
+	public Birdie(double x, double y, int width, int height, BufferedImage sprite, Nest nest) {
 		super(x, y, width, height, sprite, false);
 		// TODO Auto-generated constructor stub
 		
 		nameText = new Text(0,(int)x, (int)y + 45, Color.black, 20f);
 		nameText.AddOutline(Color.black);
+		
+		
+		this.nest = nest;
 	}
 	public static int maximumHunger = 5;
 	public int hungerCurrent = 3;
 	public String name = "";
 	public boolean show = true;
+	
+	public Nest nest;
 	
 	public Text nameText;
 	
@@ -85,15 +91,15 @@ public class Birdie extends Entity{
 		{
 			return;
 		}
-		Particles box = new Particles(duration, this.getX() , this.getY() - 20 , 0);
-		box.ActivateIcon(Game.ssheet.getSprite(192, 17, 24, 24), 0,-1,70,50);
+		Particles box = new Particles(duration, this.getX() - 20, this.getY() - 20 , 0);
+		box.ActivateIcon(Game.ssheet.getSprite(192, 17, 24, 24), 0,-1,140,50);
 		box.ActivateText(33, text, c);
-		box.text.x += 10;
+		box.text.x += 20;
 		box.text.y += 20;
 		box.text.fontSize = size;
 		
 		box.text.AddOutline(Color.black);
-		Game.p.add(box);
+		this.nest.displayBoxes.add(box);
 	}
 	
 	public Color c;

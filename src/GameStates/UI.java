@@ -49,11 +49,11 @@ public class UI {
 			}
 			endRun.ChangeTextFont(Game.optionFont);
 			endRun.ActivateOutline(Color.black);
-		score = new Text(20, Game.WIDTH / 2 - 40, Game.HEIGHT - 20, new Color(220, 90, 20), 17);
+		score = new Text(20, Game.WIDTH / 2 - 60, Game.HEIGHT - 20, new Color(220, 90, 20), 17);
 		score.AddOutline(new Color(100,100,30));
 		
 		
-		continuet = new Text(0,Game.WIDTH / 2 - 130, 70,  new Color(100, 200, 100), 17);
+		continuet = new Text(0,Game.WIDTH / 2 - 120, 70,  new Color(100, 200, 100), 17);
 continuet.AddOutline(Color.black);
 
 
@@ -72,7 +72,7 @@ continuet.AddOutline(Color.black);
 		{
 			if(score.font != null)
 			{
-				score.RenderText((Graphics2D) g,  Player.fruitsCollected + "/" + MommyBird.Carry);			
+				score.RenderText((Graphics2D) g,  Player.fruitsCollected + "/" + MommyBird.Carry + " fruits collected");			
 			}
 			else
 			{
@@ -87,7 +87,7 @@ continuet.AddOutline(Color.black);
 		{
 			g.setFont(Game.newFont);
 			g.setColor(new Color(188,44,10));
-			g.fillRect(Game.WIDTH / 5 - 20, 30, 250, 250);
+			g.fillRect(0, 0, Game.WIDTH, Game.HEIGHT);
 			g.setColor(Color.cyan);
 			
 			endRun.RenderOptions(g);

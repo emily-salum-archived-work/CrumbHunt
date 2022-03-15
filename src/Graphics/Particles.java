@@ -75,7 +75,7 @@ public class Particles extends Entity{
 		if(life > lifeTime)
 		{
 			 Game.p.remove(this);
-
+			 life = 0;
 		}
 	}
 	

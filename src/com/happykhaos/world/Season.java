@@ -12,7 +12,7 @@ public class Season {
 	
 	
 	public static final int SummerEnd = 4;
-	public static final int WinterEnd = 11;
+	public static final int WinterEnd = 12;
 	
 	public static void PassSeason()
 	{
@@ -40,12 +40,12 @@ public class Season {
 	{
 		if(CurrentMonth < SummerEnd )
 		{
-			MommyBird.Carry = 8;
+			MommyBird.Carry = 6;
 			Game.player.speed =1.5f;
 		}
 		else
 		{
-			MommyBird.Carry = 6;
+			MommyBird.Carry = 4;
 			Game.player.speed = 1f;
 		}
 		

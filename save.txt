@@ -1,0 +1,12 @@
+fruits-7
+season-43
+PeachHunger-5
+LinaHunger-6
+NommyHunger-6
+RippaHunger-6
+KiwiHunger-4
+Speed-4
+Carry-4
+Life-4
+bonus_fruits-4
+firstGame-4

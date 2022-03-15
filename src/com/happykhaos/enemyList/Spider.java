@@ -6,6 +6,9 @@ import com.happykhaos.main.Game;
 
 public class Spider extends Enemy{
 
+	
+	int attackDelay = 0;
+	
 	public Spider(double x, double y, int width, int height,  float speed, BufferedImage attack, int moves) {
 		super(x, y, width, height, speed, attack, moves);
 		// TODO Auto-generated constructor stub
@@ -15,12 +18,21 @@ public class Spider extends Enemy{
 		 z = 360;
 		 w = width;
 		 h = height;
+		 
+		 this.attackMaxInterval = 20;
+		  
 	}
 	
 	public int w, h;
 	
+	
+	
 	public void Tick()
 	{
+		if(attackDelay > 0) {
+			attackDelay --;
+		}
+		
 		if(z == 0)
 		{
 			super.Tick();
@@ -33,6 +45,13 @@ public class Spider extends Enemy{
 		}
 	}
 	
+	public boolean canAttack() {
+		return this.attackDelay == 0;
+	}
 	
+	public void attacked() {
+		
+		this.attackDelay = 60;
+	}
 
 }
